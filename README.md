@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aniruddha Chattopadhyay - Academic Portfolio
 
-## Getting Started
+A modern, minimalist academic portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Tech Stack**: Built with Next.js 15, TypeScript, and Tailwind CSS
+- **Responsive Design**: Fully responsive across all devices
+- **Blog System**: MDX-powered blog with syntax highlighting
+- **Project Showcase**: Grid layout with individual project pages
+- **SEO Optimized**: Metadata and OpenGraph tags for better visibility
+- **Fast Performance**: Optimized images and code splitting
+- **Smooth Animations**: Framer Motion for elegant transitions
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd portfolio-site
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## 🏗️ Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+portfolio-site/
+├── app/                    # Next.js App Router pages
+├── components/             # React components
+├── content/               # Blog posts (MDX)
+│   └── blog/
+├── lib/                   # Utilities and data
+│   ├── data.ts           # Site content data
+│   ├── mdx.ts            # MDX processing
+│   ├── types.ts          # TypeScript types
+│   └── utils.ts          # Utility functions
+├── public/               # Static assets
+│   ├── images/
+│   └── *.pdf
+└── tailwind.config.ts    # Tailwind configuration
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Adding Blog Posts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create a new `.mdx` file in `content/blog/`:
 
-## Deploy on Vercel
+```mdx
+---
+title: "Your Post Title"
+date: "2025-01-15"
+excerpt: "Brief description"
+tags: ["AI", "Machine Learning"]
+author: "Aniruddha Chattopadhyay"
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Your content here...
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Customization
+
+### Colors
+
+Edit the color scheme in `tailwind.config.ts`:
+
+```typescript
+colors: {
+  primary: { ... },
+  accent: { ... },
+  navy: { ... },
+}
+```
+
+### Content
+
+Update personal information in:
+- `lib/data.ts` - Experience, publications, projects, awards
+- `components/Hero.tsx` - Hero section
+- `components/Footer.tsx` - Footer links and info
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import the repository on [Vercel](https://vercel.com)
+3. Deploy automatically
+
+### Other Platforms
+
+Build for production:
+```bash
+npm run build
+npm start
+```
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contact
+
+- **Email**: studyaniruddha@gmail.com
+- **LinkedIn**: [linkedin.com/in/aniruddha-chattopadhyay](https://linkedin.com/in/aniruddha-chattopadhyay)
+- **GitHub**: [github.com/AniruddhaChattopadhyay](https://github.com/AniruddhaChattopadhyay)
+
+---
+
+Built with ❤️ by Aniruddha Chattopadhyay
