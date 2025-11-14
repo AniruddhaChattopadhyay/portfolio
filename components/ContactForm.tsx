@@ -68,16 +68,23 @@ export function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // Simulate form submission - in a real app, you'd send to an API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      // For now, we'll just log and show success
-      console.log('Form submitted:', formData);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
       
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setErrors({});
     } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -205,7 +212,7 @@ export function ContactForm() {
         {/* Status Messages */}
         {submitStatus === 'success' && (
           <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-            Thank you for your message! I'll get back to you soon.
+            Thank you for your message! I&apos;ll get back to you soon.
           </div>
         )}
         {submitStatus === 'error' && (

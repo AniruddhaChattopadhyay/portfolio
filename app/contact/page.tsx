@@ -50,7 +50,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-300">
-            I'm always open to discussing new opportunities, research collaborations, 
+            I&apos;m always open to discussing new opportunities, research collaborations, 
             or just having a conversation about AI and technology.
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
       <Section className="bg-gray-50">
         <SectionHeader
           title="Send Me a Message"
-          subtitle="Fill out the form below and I'll get back to you as soon as possible"
+          subtitle="Fill out the form below and I&apos;ll get back to you as soon as possible"
         />
         <ContactForm />
       </Section>
@@ -114,9 +114,9 @@ export default function ContactPage() {
               Looking for Graduate Opportunities
             </h2>
             <p className="text-gray-700 leading-relaxed text-center mb-6">
-              I'm actively seeking opportunities to pursue my Master's degree in Computer Science, 
-              with a focus on AI/ML, in the United States. If you're a faculty member or know of 
-              relevant programs, I'd love to connect!
+              I&apos;m actively seeking opportunities to pursue my Master&apos;s degree in Computer Science, 
+              with a focus on AI/ML, in the United States. If you&apos;re a faculty member or know of 
+              relevant programs, I&apos;d love to connect!
             </p>
             <div className="flex justify-center">
               <a
