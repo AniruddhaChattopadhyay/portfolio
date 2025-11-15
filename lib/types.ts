@@ -20,7 +20,7 @@ export interface Experience {
   id: string;
   company: string;
   role: string;
-  type: 'Full Time' | 'Part Time' | 'Volunteer' | 'Contract';
+  type: 'Full Time' | 'Part Time' | 'Volunteer' | 'Contract' | 'Internship';
   location: string;
   startDate: string;
   endDate: string | 'Present';

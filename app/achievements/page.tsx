@@ -169,6 +169,10 @@ export default function AchievementsPage() {
               </li>
               <li className="flex items-start">
                 <span className="text-primary-600 mr-2">•</span>
+                <span>Major in Industrial Electronics with 8.66/10 CGPA</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2">•</span>
                 <span>Minor in Computer Science with 9.31/10 CGPA</span>
               </li>
               <li className="flex items-start">

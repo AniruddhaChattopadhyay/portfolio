@@ -9,6 +9,7 @@ interface TimelineItemProps {
   subtitle: string;
   period: string;
   location?: string;
+  type?: string;
   description: string[];
   technologies?: string[];
   index: number;
@@ -19,6 +20,7 @@ export function TimelineItem({
   subtitle,
   period,
   location,
+  type,
   description,
   technologies,
   index,
@@ -40,9 +42,25 @@ export function TimelineItem({
       {/* Content */}
       <div className="bg-white rounded-lg shadow-md border border-gray-100 p-6 hover:shadow-lg transition-shadow">
         <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-          <div>
-            <h3 className="text-2xl font-bold text-navy-900">{title}</h3>
-            <p className="text-lg text-primary-600 font-medium mt-1">{subtitle}</p>
+          <div className="flex-1">
+            <div className="flex items-center gap-3 flex-wrap mb-2">
+              <h3 className="text-2xl font-bold text-navy-900">{title}</h3>
+              {type && (
+                <Badge 
+                  variant={
+                    type === 'Full Time' ? 'success' : 
+                    type === 'Internship' ? 'secondary' : 
+                    type === 'Volunteer' ? 'primary' : 
+                    type === 'Part Time' ? 'warning' : 
+                    'default'
+                  }
+                  className="text-xs font-medium"
+                >
+                  {type}
+                </Badge>
+              )}
+            </div>
+            <p className="text-lg text-primary-600 font-medium">{subtitle}</p>
           </div>
           <div className="text-right">
             <p className="text-gray-600 font-medium">{period}</p>

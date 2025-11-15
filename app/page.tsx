@@ -26,7 +26,7 @@ const highlights = [
   {
     icon: Award,
     title: 'Competition Winner',
-    description: 'First place at international hackathons including Dafi-Daytona and Neo4J x SambaNova. YC Overnight Hackathon participant.',
+    description: 'First place at international hackathons including Daft-Daytona and Neo4J x SambaNova. YC Overnight Hackathon participant.',
     link: '/achievements',
   },
   {

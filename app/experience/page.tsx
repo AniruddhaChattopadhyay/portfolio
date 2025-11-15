@@ -33,6 +33,7 @@ export default function ExperiencePage() {
               subtitle={exp.company}
               period={`${exp.startDate} – ${exp.endDate}`}
               location={exp.location}
+              type={exp.type}
               description={exp.description}
               technologies={exp.technologies}
               index={index}

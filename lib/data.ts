@@ -64,6 +64,65 @@ export const experiences: Experience[] = [
     ],
     technologies: ['RAG', 'ColPali', 'Flask', 'React', 'Kotlin', 'OpenEDX', 'Django'],
   },
+  {
+    id: 'bluebeak-ai',
+    company: 'bluebeak.ai',
+    role: 'MLOps Platform Engineering Intern',
+    type: 'Internship',
+    location: 'Remote',
+    startDate: 'Dec. 2021',
+    endDate: 'Feb. 2022',
+    description: [
+      'Built command-line ETL tool capable of streaming data using Kafka stream from a source database to a sink database.',
+      'Deployed the solution using Docker and Kubernetes pipeline.',
+      'Studied different frameworks like Gradio and Streamlit and recommended their use based on the use-case at hand.',
+    ],
+    technologies: ['Kafka', 'Docker', 'Kubernetes', 'ETL', 'Gradio', 'Streamlit', 'Python'],
+  },
+  {
+    id: 'hsbc-intern',
+    company: 'HSBC',
+    role: 'Research & Development Intern',
+    type: 'Internship',
+    location: 'Kolkata, India',
+    startDate: 'Jun. 2020',
+    endDate: 'Jul. 2020',
+    description: [
+      'Predicted stock option prices using Monte Carlo simulations in a quantum computer using Qiskit Framework.',
+      'Achieved quadratic speed up on error convergence of Monte Carlo thus showing potential for huge cost cutting.',
+      'Used the algorithm to simulate stock price and validated the result using the BlackScholes-Merton model.',
+    ],
+    technologies: ['Qiskit', 'Quantum Computing', 'Monte Carlo Simulation', 'Python', 'Financial Modeling'],
+  },
+  {
+    id: 'stepswatch',
+    company: 'StepsWatch',
+    role: 'Machine Learning Engineer Intern',
+    type: 'Internship',
+    location: 'Remote',
+    startDate: 'May. 2020',
+    endDate: 'Jun. 2020',
+    description: [
+      'Built a Python backend in Flask that delivers visual graphs based on analysed data to a React Native front end.',
+      'Created a pipeline for facial recognition and face masking (Gaussian Blur) on videos built using Dlib library.',
+    ],
+    technologies: ['Flask', 'Python', 'React Native', 'Dlib', 'Computer Vision', 'Facial Recognition'],
+  },
+  {
+    id: 'lubble',
+    company: 'Lubble Technology',
+    role: 'Full Stack Android and Django Developer Intern',
+    type: 'Internship',
+    location: 'Remote',
+    startDate: 'Oct. 2019',
+    endDate: 'Aug. 2022',
+    description: [
+      'Built an Android app with frontend in Java and backend using Django, Node.js and Firebase.',
+      'Built and maintained multiple REST APIs in Django and wrote cloud functions for Firebase in Node.js.',
+      'Maintained database of the users using MySQL and used technologies like Celery and RabbitMQ.',
+    ],
+    technologies: ['Java', 'Android', 'Django', 'Node.js', 'Firebase', 'REST APIs', 'MySQL', 'Celery', 'RabbitMQ'],
+  },
 ];
 
 export const publications: Publication[] = [
@@ -76,7 +135,7 @@ export const publications: Publication[] = [
     month: 'May',
     abstract: 'First-author long paper on Metatuning, a novel lightweight adaptation framework for aligning large language models (LLMs) with symbolic reasoning objectives. Introduces metatuning as a middle ground between few-shot prompting and full fine-tuning, enabling efficient structural alignment on consumer hardware.',
     links: {
-      paper: '#',
+      paper: 'https://arxiv.org/abs/2507.09854',
     },
     award: 'Accepted at NeSy 2025; proceedings to appear in the Journal of Machine Learning Research (JMLR)',
   },
@@ -89,7 +148,7 @@ export const publications: Publication[] = [
     month: 'Aug.',
     abstract: 'Presented EduTree, an academic genealogy graph (AGG) modeling mentorship lineages and institutional influence within the field of education. Applied graph-theoretic centrality measures and topic modeling to quantify researcher impact and trace the evolution of research clusters. Identified high-centrality mentors, pioneering institutions, and thematic trajectories shaping the discipline\'s academic network.',
     links: {
-      paper: '#',
+      paper: 'https://dl.acm.org/doi/abs/10.1145/3383583.3398595',
     },
     award: 'Best M.Tech Thesis Project for contributions to network science and machine learning',
   },
@@ -133,8 +192,8 @@ export const featuredProjects: Project[] = [
 
 export const awards: Award[] = [
   {
-    id: 'dafi-daytona',
-    title: 'Dafi-Daytona Hackathon - First Prize',
+    id: 'daft-daytona',
+    title: 'Daft-Daytona Hackathon - First Prize',
     organization: 'International Hackathon',
     date: '2025',
     description: 'Built an AI agent for interior design using Gemini nano Banana and Nano VLM, enabling layout-preserving redesigns; won First Prize.',
@@ -179,6 +238,38 @@ export const awards: Award[] = [
     date: '2019',
     description: 'Created Care4U, an AI-driven elderly healthcare app with fall detection, mood recognition, and chatbot; later acquired by Govt. of West Bengal.',
     category: 'national',
+  },
+  {
+    id: 'best-mtech-thesis',
+    title: 'Best M.Tech Thesis Project Award',
+    organization: 'IIT Kharagpur',
+    date: '2020',
+    description: 'Awarded Best M.Tech Thesis Project for contributions to network science and machine learning. Presented EduTree, an academic genealogy graph modeling mentorship lineages.',
+    category: 'academic',
+  },
+  {
+    id: 'dept-rank-2',
+    title: 'Department Rank 2',
+    organization: 'IIT Kharagpur',
+    date: '2019',
+    description: 'Secured Department Rank 2 at IIT Kharagpur, demonstrating consistent academic excellence throughout the program.',
+    category: 'academic',
+  },
+  {
+    id: 'dept-change-top-10',
+    title: 'Department Change Achievement',
+    organization: 'IIT Kharagpur',
+    date: '2018',
+    description: 'Successfully secured a department change at IIT Kharagpur by being in the top 10% of students, demonstrating exceptional academic performance.',
+    category: 'academic',
+  },
+  {
+    id: 'isc-12th-excellence',
+    title: 'ISC 12th Board Examination - 97.5%',
+    organization: 'Council for the Indian School Certificate Examinations',
+    date: '2016',
+    description: 'Secured 97.5% in ISC 12th Board Examination. Ranked 1st in District, 3rd in State (West Bengal), and All India Rank 8.',
+    category: 'academic',
   },
 ];
 
