@@ -9,8 +9,21 @@ import { motion } from 'framer-motion';
 
 export function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative text-white py-20 md:py-32 min-h-[90vh] flex items-center overflow-hidden">
+      {/* Cover Photo Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/cover.png"
+          alt="Cover background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/80 to-navy-800/70"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -83,14 +96,15 @@ export function Hero() {
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               <div className="absolute inset-0 bg-primary-500 rounded-full blur-3xl opacity-20"></div>
-              <Image
-                src="/images/profile.png"
-                alt="Aniruddha Chattopadhyay"
-                width={384}
-                height={384}
-                className="relative rounded-full border-4 border-white/10 shadow-2xl object-cover"
-                priority
-              />
+              <div className="relative w-full h-full rounded-full border-4 border-white/10 shadow-2xl overflow-hidden">
+                <Image
+                  src="/images/profile.jpeg"
+                  alt="Aniruddha Chattopadhyay"
+                  fill
+                  className="object-cover object-[center_50%]"
+                  priority
+                />
+              </div>
             </div>
           </motion.div>
         </div>

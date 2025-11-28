@@ -85,7 +85,7 @@ export default function AboutPage() {
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <Image
-                src="/images/profile.png"
+                src="/images/profile.jpeg"
                 alt="Aniruddha Chattopadhyay"
                 width={320}
                 height={320}
