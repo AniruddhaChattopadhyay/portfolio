@@ -197,7 +197,24 @@ export const awards: Award[] = [
     organization: 'International Hackathon',
     date: '2025',
     description: 'Built an AI agent for interior design using Gemini nano Banana and Nano VLM, enabling layout-preserving redesigns; won First Prize.',
+    longDescription: `At the Daft-Daytona Hackathon 2025, our team tackled the challenge of AI-powered interior design with a unique approach. We built an intelligent agent that could understand room layouts and suggest redesigns while preserving the fundamental structure and flow of the space.
+
+The core innovation was using Gemini Nano Banana combined with Nano VLM (Vision-Language Model) to process room images and generate contextually aware design suggestions. The system could:
+
+• Analyze existing room layouts and identify furniture, fixtures, and spatial relationships
+• Generate redesign proposals that maintain the room's usability and flow
+• Provide multiple style options (modern, minimalist, bohemian, etc.) while keeping the layout intact
+• Offer budget-conscious alternatives by suggesting similar furniture pieces
+
+What made our solution stand out was the emphasis on "layout-preserving" redesigns—rather than generating completely new room configurations, our agent understood that users often want to refresh their space without major structural changes. This practical approach resonated with the judges and earned us the First Prize.`,
     category: 'international',
+    images: [
+      '/images/projects/daft/1756530217488.jpeg',
+      '/images/projects/daft/1756530217571.jpeg',
+      '/images/projects/daft/1756737458305.jpeg',
+      '/images/projects/daft/1756737469161.jpeg',
+    ],
+    technologies: ['Gemini Nano', 'Nano VLM', 'Python', 'Computer Vision', 'AI Agents'],
   },
   {
     id: 'neo4j-samba',
@@ -205,7 +222,31 @@ export const awards: Award[] = [
     organization: 'International Hackathon',
     date: '2024',
     description: 'Created a persistent memory system for coding agents using Neo4J and SambaNova, winning the SambaNova Track.',
+    longDescription: `The Neo4J × SambaNova Hacknight brought together developers passionate about graph databases and high-performance AI inference. Our winning project addressed a critical challenge in AI coding assistants: the lack of persistent, contextual memory.
+
+Traditional coding agents suffer from "context amnesia"—they can't remember previous sessions, user preferences, or project-specific patterns. We built a solution that combines:
+
+**Neo4J Graph Database** for storing:
+• Code relationships and dependencies as connected nodes
+• User interaction patterns and preferences
+• Project-specific conventions and style guides
+• Historical context from previous coding sessions
+
+**SambaNova's Ultra-Fast Inference** for:
+• Real-time memory retrieval during coding assistance
+• Dynamic graph traversal to find relevant context
+• Generating responses that incorporate historical knowledge
+
+The system creates a "memory graph" for each user/project combination, growing smarter over time. When a developer asks for help, the agent queries the graph to understand not just the current code, but the project's history, the developer's coding style, and relevant past decisions.
+
+This approach won us the SambaNova Track, with judges highlighting the practical applicability and the elegant combination of graph-based memory with high-speed inference.`,
     category: 'international',
+    images: [
+      '/images/projects/sambanova/1756368045795.jpeg',
+      '/images/projects/sambanova/1756368045839.jpeg',
+      '/images/projects/sambanova/1756368045893.jpeg',
+    ],
+    technologies: ['Neo4J', 'SambaNova', 'Python', 'Graph Databases', 'LLMs', 'AI Agents'],
   },
   {
     id: 'yc-overnight',
@@ -213,7 +254,28 @@ export const awards: Award[] = [
     organization: 'Y Combinator',
     date: '2024',
     description: 'Invited participant at the prestigious Y Combinator Overnight Hackathon in San Francisco.',
+    longDescription: `Being invited to the Y Combinator Overnight Hackathon in San Francisco was an incredible honor. This exclusive event brought together some of the most talented builders and entrepreneurs from around the world, all under one roof at YC's headquarters.
+
+The overnight format created an intense, high-energy environment where teams had roughly 12 hours to conceptualize, build, and present a working prototype. The atmosphere was electric—surrounded by fellow hackers, YC partners offering advice, and the legacy of companies that had been built in the same space.
+
+**The Experience:**
+• Collaborated with brilliant minds from diverse backgrounds
+• Received real-time feedback from YC partners and alumni
+• Networked with founders of successful startups
+• Experienced the legendary YC culture firsthand
+
+**Key Takeaways:**
+• The importance of rapid iteration and MVP thinking
+• How to pitch effectively under time pressure
+• Building relationships with the broader YC community
+• Understanding what YC looks for in founders and ideas
+
+This hackathon reinforced my belief in the power of building quickly and learning from real users. The connections made during that night continue to be valuable, and the experience shaped how I approach hackathons and product development.`,
     category: 'international',
+    images: [
+      '/images/projects/YC/1756005798547.jpeg',
+    ],
+    technologies: ['Rapid Prototyping', 'Product Development', 'Entrepreneurship'],
   },
   {
     id: 'ef-genai-2023',
@@ -221,7 +283,33 @@ export const awards: Award[] = [
     organization: 'National Hackathon',
     date: '2023',
     description: 'Built a prompt-to-video engine with intelligent image selection, sentiment-based BGM, and multilingual support; winner from 200+ participants.',
+    longDescription: `The EF GenAI Hackathon 2023 challenged participants to push the boundaries of generative AI. Our winning project was a comprehensive prompt-to-video engine that could transform text descriptions into engaging video content.
+
+**Core Features:**
+
+*Intelligent Image Selection:*
+The system analyzed prompts to understand visual requirements and automatically sourced or generated appropriate imagery. Using a combination of image databases and AI generation, it could match the tone and subject matter of any given prompt.
+
+*Sentiment-Based Background Music:*
+Perhaps the most innovative feature was our BGM system. By analyzing the emotional arc of the input text, the engine would:
+• Detect sentiment changes throughout the narrative
+• Select music tracks that matched the emotional tone
+• Dynamically adjust tempo and intensity to match scene transitions
+
+*Multilingual Support:*
+We built the engine to handle multiple languages from the ground up, enabling:
+• Text-to-speech in various languages
+• Culturally appropriate visual selections
+• Subtitle generation for accessibility
+
+**Technical Implementation:**
+• Custom prompt engineering for consistent visual outputs
+• Audio analysis pipeline for music-mood matching
+• Modular architecture allowing easy language additions
+
+Winning against 200+ participants validated our approach of focusing on the complete user experience rather than just technical novelty. The judges particularly appreciated how the different AI components worked together seamlessly.`,
     category: 'national',
+    technologies: ['Generative AI', 'Computer Vision', 'NLP', 'Audio Processing', 'Python'],
   },
   {
     id: 'hsbc-ai-2018',

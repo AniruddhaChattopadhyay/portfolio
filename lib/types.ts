@@ -50,8 +50,11 @@ export interface Award {
   organization: string;
   date: string;
   description: string;
+  longDescription?: string;
   category: 'international' | 'national' | 'academic';
   link?: string;
+  images?: string[];
+  technologies?: string[];
 }
 
 export interface BlogPost {

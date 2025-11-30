@@ -115,12 +115,15 @@ export default function AchievementsPage() {
           {filteredAwards.map((award, index) => (
             <AwardCard
               key={award.id}
+              id={award.id}
               title={award.title}
               organization={award.organization}
               date={award.date}
               description={award.description}
               category={award.category}
               link={award.link}
+              hasDetailPage={!!(award.longDescription || (award.images && award.images.length > 0))}
+              hasImages={!!(award.images && award.images.length > 0)}
               index={index}
             />
           ))}
