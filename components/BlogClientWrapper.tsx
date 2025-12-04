@@ -4,14 +4,22 @@ import React, { useState } from 'react';
 import { Section } from './Section';
 import { BlogCard } from './BlogCard';
 import { Badge } from './Badge';
+import { Pagination } from './Pagination';
 import { BlogPost } from '@/lib/types';
 
 interface BlogClientWrapperProps {
   posts: BlogPost[];
   allTags: string[];
+  currentPage?: number;
+  totalPages?: number;
 }
 
-export function BlogClientWrapper({ posts, allTags }: BlogClientWrapperProps) {
+export function BlogClientWrapper({ 
+  posts, 
+  allTags, 
+  currentPage = 1, 
+  totalPages = 1 
+}: BlogClientWrapperProps) {
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   const filteredPosts =
@@ -28,7 +36,7 @@ export function BlogClientWrapper({ posts, allTags }: BlogClientWrapperProps) {
             <button onClick={() => setSelectedTag('all')}>
               <Badge
                 variant={selectedTag === 'all' ? 'primary' : 'default'}
-                className="text-base py-2 px-4 cursor-pointer hover:scale-105"
+                className="text-base py-2 px-4 cursor-pointer hover:scale-105 transition-transform"
               >
                 All Posts
               </Badge>
@@ -37,7 +45,7 @@ export function BlogClientWrapper({ posts, allTags }: BlogClientWrapperProps) {
               <button key={tag} onClick={() => setSelectedTag(tag)}>
                 <Badge
                   variant={selectedTag === tag ? 'primary' : 'default'}
-                  className="text-base py-2 px-4 cursor-pointer hover:scale-105"
+                  className="text-base py-2 px-4 cursor-pointer hover:scale-105 transition-transform"
                 >
                   {tag}
                 </Badge>
@@ -50,20 +58,32 @@ export function BlogClientWrapper({ posts, allTags }: BlogClientWrapperProps) {
       {/* Blog Posts Grid */}
       <Section className="bg-white">
         {filteredPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
-              <BlogCard
-                key={post.slug}
-                slug={post.slug}
-                title={post.title}
-                excerpt={post.excerpt}
-                date={post.date}
-                tags={post.tags}
-                readingTime={post.readingTime}
-                index={index}
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post, index) => (
+                <BlogCard
+                  key={post.slug}
+                  slug={post.slug}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  date={post.date}
+                  tags={post.tags}
+                  readingTime={post.readingTime}
+                  index={index}
+                  coverImage={post.coverImage}
+                />
+              ))}
+            </div>
+            
+            {/* Pagination - only show when not filtering by tag */}
+            {selectedTag === 'all' && totalPages > 1 && (
+              <Pagination 
+                currentPage={currentPage} 
+                totalPages={totalPages} 
+                basePath="/blog" 
               />
-            ))}
-          </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-20">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">

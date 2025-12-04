@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from './Card';
 import { Badge } from './Badge';
@@ -16,6 +17,7 @@ interface BlogCardProps {
   tags: string[];
   readingTime: number;
   index: number;
+  coverImage?: string;
 }
 
 export function BlogCard({
@@ -26,6 +28,7 @@ export function BlogCard({
   tags,
   readingTime,
   index,
+  coverImage,
 }: BlogCardProps) {
   return (
     <motion.div
@@ -35,7 +38,17 @@ export function BlogCard({
       viewport={{ once: true }}
     >
       <Link href={`/blog/${slug}`}>
-        <Card hover className="h-full cursor-pointer">
+        <Card hover className="h-full cursor-pointer overflow-hidden">
+          {coverImage && (
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+              <Image
+                src={coverImage}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          )}
           <CardHeader>
             <CardTitle className="text-xl mb-3 hover:text-primary-600 transition-colors">
               {title}

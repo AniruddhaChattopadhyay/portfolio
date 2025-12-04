@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { isBlogEnabled } from '@/lib/config';
 
-const navItems = [
+const allNavItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Experience', href: '/experience' },
@@ -14,9 +15,12 @@ const navItems = [
   { name: 'Projects', href: '/projects' },
   { name: 'Entrepreneurship', href: '/entrepreneurship' },
   { name: 'Achievements', href: '/achievements' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Blog', href: '/blog', requiresBlog: true },
   { name: 'Contact', href: '/contact' },
 ];
+
+// Filter out blog if not enabled
+const navItems = allNavItems.filter(item => !item.requiresBlog || isBlogEnabled);
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);

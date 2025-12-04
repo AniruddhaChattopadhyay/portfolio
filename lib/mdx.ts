@@ -5,6 +5,9 @@ import { BlogPost } from './types';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
+// Constants for pagination
+export const POSTS_PER_PAGE = 9;
+
 export function getAllPosts(): BlogPost[] {
   // Ensure directory exists
   if (!fs.existsSync(postsDirectory)) {
@@ -20,9 +23,13 @@ export function getAllPosts(): BlogPost[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
-      // Calculate reading time
+      // Calculate reading time (excluding code blocks and frontmatter)
+      const textContent = content
+        .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+        .replace(/`[^`]*`/g, '') // Remove inline code
+        .replace(/<[^>]*>/g, ''); // Remove JSX/HTML tags
       const wordsPerMinute = 200;
-      const words = content.trim().split(/\s+/).length;
+      const words = textContent.trim().split(/\s+/).length;
       const readingTime = Math.ceil(words / wordsPerMinute);
 
       return {
@@ -34,6 +41,8 @@ export function getAllPosts(): BlogPost[] {
         tags: data.tags || [],
         readingTime,
         author: data.author || 'Aniruddha Chattopadhyay',
+        coverImage: data.coverImage,
+        lastUpdated: data.lastUpdated,
       };
     });
 
@@ -46,15 +55,41 @@ export function getAllPosts(): BlogPost[] {
   });
 }
 
+export function getPaginatedPosts(page: number = 1): {
+  posts: BlogPost[];
+  totalPages: number;
+  currentPage: number;
+  totalPosts: number;
+} {
+  const allPosts = getAllPosts();
+  const totalPosts = allPosts.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+  const currentPage = Math.max(1, Math.min(page, totalPages || 1));
+  
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const posts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  
+  return {
+    posts,
+    totalPages,
+    currentPage,
+    totalPosts,
+  };
+}
+
 export function getPostBySlug(slug: string): BlogPost | null {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Calculate reading time
+    // Calculate reading time (excluding code blocks and frontmatter)
+    const textContent = content
+      .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+      .replace(/`[^`]*`/g, '') // Remove inline code
+      .replace(/<[^>]*>/g, ''); // Remove JSX/HTML tags
     const wordsPerMinute = 200;
-    const words = content.trim().split(/\s+/).length;
+    const words = textContent.trim().split(/\s+/).length;
     const readingTime = Math.ceil(words / wordsPerMinute);
 
     return {
@@ -66,6 +101,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
       tags: data.tags || [],
       readingTime,
       author: data.author || 'Aniruddha Chattopadhyay',
+      coverImage: data.coverImage,
+      lastUpdated: data.lastUpdated,
     };
   } catch (error) {
     return null;

@@ -66,5 +66,7 @@ export interface BlogPost {
   tags: string[];
   readingTime: number;
   author: string;
+  coverImage?: string;
+  lastUpdated?: string;
 }
 

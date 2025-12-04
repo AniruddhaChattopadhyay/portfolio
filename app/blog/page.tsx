@@ -1,10 +1,24 @@
 import React from 'react';
-import { Section, SectionHeader } from '@/components/Section';
+import { notFound } from 'next/navigation';
+import { Section } from '@/components/Section';
 import { BlogClientWrapper } from '@/components/BlogClientWrapper';
-import { getAllPosts, getAllTags } from '@/lib/mdx';
+import { getPaginatedPosts, getAllTags } from '@/lib/mdx';
+import { isBlogEnabled } from '@/lib/config';
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+interface BlogPageProps {
+  searchParams: Promise<{ page?: string }>;
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  // Hide blog in production
+  if (!isBlogEnabled) {
+    notFound();
+  }
+
+  const params = await searchParams;
+  const page = parseInt(params.page || '1', 10);
+  
+  const { posts, totalPages, currentPage, totalPosts } = getPaginatedPosts(page);
   const allTags = getAllTags();
 
   return (
@@ -18,12 +32,21 @@ export default function BlogPage() {
           <p className="text-xl text-gray-300">
             Thoughts on AI, machine learning, research, and technology
           </p>
+          {totalPosts > 0 && (
+            <p className="text-sm text-gray-400 mt-4">
+              {totalPosts} {totalPosts === 1 ? 'article' : 'articles'} published
+            </p>
+          )}
         </div>
       </Section>
 
       {/* Blog Content */}
-      <BlogClientWrapper posts={posts} allTags={allTags} />
+      <BlogClientWrapper 
+        posts={posts} 
+        allTags={allTags} 
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </>
   );
 }
-

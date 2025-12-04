@@ -1,13 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Section } from '@/components/Section';
 import { Badge } from '@/components/Badge';
 import { Button } from '@/components/Button';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, RefreshCw } from 'lucide-react';
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 import { formatDate } from '@/lib/utils';
+import { mdxComponents } from '@/components/mdx';
+import { TableOfContents } from '@/components/mdx/TableOfContents';
+import { isBlogEnabled } from '@/lib/config';
+import remarkGfm from 'remark-gfm';
+import rehypePrismPlus from 'rehype-prism-plus';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -16,6 +22,11 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
+  // Don't generate blog pages in production
+  if (!isBlogEnabled) {
+    return [];
+  }
+  
   const posts = getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
@@ -35,10 +46,23 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   return {
     title: `${post.title} | Aniruddha Chattopadhyay`,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      images: post.coverImage ? [{ url: post.coverImage }] : [],
+    },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  // Hide blog in production
+  if (!isBlogEnabled) {
+    notFound();
+  }
+
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
@@ -60,6 +84,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </Section>
 
+      {/* Cover Image */}
+      {post.coverImage && (
+        <Section className="bg-white pt-0 pb-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative aspect-[2/1] w-full overflow-hidden rounded-xl">
+              <Image
+                src={post.coverImage}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </Section>
+      )}
+
       {/* Article Header */}
       <Section className="bg-gradient-to-br from-navy-900 to-navy-800 text-white py-12">
         <div className="max-w-4xl mx-auto">
@@ -71,6 +112,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <Calendar size={16} className="mr-2" />
               {formatDate(post.date)}
             </span>
+            {post.lastUpdated && (
+              <span className="flex items-center">
+                <RefreshCw size={16} className="mr-2" />
+                Updated: {formatDate(post.lastUpdated)}
+              </span>
+            )}
             <span className="flex items-center">
               <Clock size={16} className="mr-2" />
               {post.readingTime} min read
@@ -89,9 +136,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Article Content */}
       <Section className="bg-white">
-        <article className="max-w-4xl mx-auto prose prose-lg prose-navy max-w-none">
-          <MDXRemote source={post.content} />
-        </article>
+        <div className="max-w-4xl mx-auto">
+          {/* Table of Contents */}
+          <TableOfContents content={post.content} />
+          
+          {/* Main Content */}
+          <article className="prose prose-lg prose-navy max-w-none">
+            <MDXRemote 
+              source={post.content} 
+              components={mdxComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [[rehypePrismPlus, { ignoreMissing: true }]],
+                },
+              }}
+            />
+          </article>
+        </div>
       </Section>
 
       {/* Author Bio */}
@@ -113,4 +175,3 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     </>
   );
 }
-
