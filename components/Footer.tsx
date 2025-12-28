@@ -58,8 +58,8 @@ export function Footer() {
               Aniruddha Chattopadhyay
             </h3>
             <p className="text-gray-300 mb-4">
-              ML Engineer & Researcher specializing in Multimodal AI, LLMs, and Computer Vision.
-              IIT Kharagpur Alumni pursuing graduate studies in the US.
+              ML Engineer & Researcher specializing in Neurosymbolic AI, LLMs, and Computer Vision.
+              An IIT Kharagpur Alumni with a passion for building AI systems that make a difference.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link) => {
